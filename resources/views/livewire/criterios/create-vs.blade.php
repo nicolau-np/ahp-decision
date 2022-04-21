@@ -36,7 +36,7 @@
                         @endforeach
                     </select>
                     <br /><br />
-                    <input type="number" placeholder="Valor" wire:model="valor" />
+                    <input type="decimal" placeholder="Valor" wire:model="valor" />
                     <br />
                     <button type="submit">Salvar</button>
                 </form>

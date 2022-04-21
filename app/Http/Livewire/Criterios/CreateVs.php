@@ -38,7 +38,7 @@ class CreateVs extends Component
         $data = [
             'id_criterio1' => $this->getCriterio->id,
             'id_criterio2' => $this->criterio,
-            'valor' => 1,
+            'valor' => $this->valor,
             'estado' => "on"
         ];
 
