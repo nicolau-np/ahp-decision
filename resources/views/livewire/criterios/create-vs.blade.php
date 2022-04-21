@@ -35,9 +35,15 @@
                             <option value="{{ $criterios->id }}">{{ $criterios->criterio }}</option>
                         @endforeach
                     </select>
+                    @error('criterio')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     <br /><br />
-                    <input type="decimal" placeholder="Valor" wire:model="valor" />
-                    <br />
+                    <input type="text" placeholder="Valor" wire:model="valor" />
+                    @error('valor')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    <br /><br />
                     <button type="submit">Salvar</button>
                 </form>
             </div>

@@ -25,12 +25,12 @@ class CreateVs extends Component
     public function submit()
     {
         $this->validate([
-            'valor' => ['required'],
-            'criterio' => ['required'],
+            'valor' => ['required', 'numeric'],
+            'criterio' => ['required', 'integer'],
         ]);
 
         //verificar se ja cadastrou
-        $criterios = CriterioCriterio::where(['id_criterio1' => $this->getCriterio, 'id_criterio2' => $this->criterio])->first();
+        $criterios = CriterioCriterio::where(['id_criterio1' => $this->getCriterio->id, 'id_criterio2' => $this->criterio])->first();
         if ($criterios) {
             return back()->with(['error' => "Já cadastrou esta partida"]);
         }
