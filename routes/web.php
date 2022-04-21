@@ -1,5 +1,7 @@
 <?php
 
+use App\Alternativa;
+use App\Criterio;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
+});*/
+
+Route::livewire('/', "home");
+
+
+Route::get('/criterios', function () {
+    $criterios = Criterio::all();
+
+    return $criterios;
+});
+
+Route::get('/alternativas', function () {
+    $alternativas = Alternativa::all();
+
+    return $alternativas;
 });
