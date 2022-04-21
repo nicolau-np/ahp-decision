@@ -21,15 +21,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::livewire('/', "home");
 
+Route::group(['prefix' => "criterios"], function () {
+    Route::livewire('/list', "criterios.listar");
+});
 
-Route::get('/criterios', function () {
+Route::group(['prefix' => "alternativas"], function () {
+    Route::livewire('/list', "alternativas.listar");
+});
+
+/*Route::get('/criterios', function () {
     $criterios = Criterio::all();
-
     return $criterios;
 });
 
 Route::get('/alternativas', function () {
     $alternativas = Alternativa::all();
-
     return $alternativas;
-});
+});*/

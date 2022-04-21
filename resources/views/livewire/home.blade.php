@@ -4,7 +4,7 @@
     @section('submenu', $submenu)
     @section('type', $type)
 
-    <div class="content">
-        
+        <div class="content">
+            <h1>AHP Decision</h1>
+        </div>
     </div>
-</div>

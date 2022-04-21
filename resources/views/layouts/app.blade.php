@@ -22,9 +22,9 @@ $type = app()->view->getSections()['type'];
     <div class="menu">
         <a href="/">Home</a>
         &nbsp;&nbsp;
-        <a href="/criterios">Critérios</a>
+        <a href="/criterios/list">Critérios</a>
         &nbsp;&nbsp;
-        <a href="/alternativas">Alternativas</a>
+        <a href="/alternativas/list">Alternativas</a>
     </div>
 
     @yield('content')
