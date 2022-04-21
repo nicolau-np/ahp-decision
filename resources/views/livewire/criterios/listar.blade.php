@@ -26,7 +26,7 @@
                             <td>{{ $criterios->sigla }}</td>
                             <td>{{ $criterios->estado }}</td>
                             <td>
-                                <a href="http://">Avançar</a>
+                            <a href="/criterios/create-vs/{{$criterios->id}}">Criterio-VS</a>
                             </td>
                         </tr>
                     @endforeach
