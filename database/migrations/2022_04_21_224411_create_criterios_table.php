@@ -14,7 +14,11 @@ class CreateCriteriosTable extends Migration
     public function up()
     {
         Schema::create('criterios', function (Blueprint $table) {
-            $table->id();
+            $table->engine = "InnoDB";
+            $table->bigIncrements('id');
+            $table->string('criterio');
+            $table->string('sigla');
+            $table->string('estado');
             $table->timestamps();
         });
     }

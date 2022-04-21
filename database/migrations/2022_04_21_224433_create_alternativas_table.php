@@ -14,7 +14,11 @@ class CreateAlternativasTable extends Migration
     public function up()
     {
         Schema::create('alternativas', function (Blueprint $table) {
-            $table->id();
+            $table->engine = "InnoDB";
+            $table->bigIncrements('id');
+            $table->string('alternativa');
+            $table->string('sigla');
+            $table->string('estado');
             $table->timestamps();
         });
     }
