@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Alternativas;
 use App\Alternativa;
 use App\AlternativaAlternativaCriterio;
 use App\Criterio;
+use App\TotalAlternativaAlternativaCriterio;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -63,9 +64,31 @@ class CreateVs extends Component
                     'valor' => 1,
                     'estado' => "on"
                 ]);
+
+                //cadastra total de alternativa no criterio
+                $total_alternativa_criterio = TotalAlternativaAlternativaCriterio::create([
+                    'id_alternativa' => $this->getAlternativa->id,
+                    'id_criterio' => $this->criterio,
+                    'valor' => null,
+                    'total' => null,
+                    'estado' => "on",
+                ]);
             }
+            //salva alternativa criterio
             $alternativa = AlternativaAlternativaCriterio::create($data);
 
+            //soma alternativas
+            $soma_alternativa_criterio = AlternativaAlternativaCriterio::where([
+                'id_alternativa' => $this->getAlternativa->id,
+                'id_criterio' => $this->criterio
+            ])->sum('valor');
+
+            //salva valor alternativa
+            $total_alternativa_criterio = TotalAlternativaAlternativaCriterio::where([
+                'id_alternativa' => $this->getAlternativa->id,
+                'id_criterio' => $this->criterio
+            ])->update(['valor' => $soma_alternativa_criterio]);
+            
             DB::commit();
             $this->clearFields();
             return back()->with(['success' => "Feito com sucesso"]);
