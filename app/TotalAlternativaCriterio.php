@@ -24,5 +24,13 @@ class TotalAlternativaCriterio extends Model
     public function criterios()
     {
         return $this->belongsTo(Criterio::class, 'id_criterio', 'id');
-    } 
+    }
+
+    public static function calculateValor($id_alternativa, $id_criterio)
+    {
+        $total_alternativa_criterio = TotalAlternativaAlternativaCriterio::where(['id_alternativa' => $id_alternativa, 'id_criterio' => $id_criterio])->first();
+        $total_criterio_criterio = TotalCriterioCriterio::where(['id_criterio' => $id_criterio])->first();
+        $total = $total_alternativa_criterio->total * $total_criterio_criterio->total;
+        return $total;
+    }
 }

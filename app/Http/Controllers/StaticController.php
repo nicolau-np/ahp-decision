@@ -6,6 +6,7 @@ use App\AlternativaAlternativaCriterio;
 use App\Criterio;
 use App\CriterioCriterio;
 use App\TotalAlternativaAlternativaCriterio;
+use App\TotalAlternativaCriterio;
 use App\TotalCriterioCriterio;
 use Illuminate\Http\Request;
 
@@ -51,11 +52,9 @@ class StaticController extends Controller
         return $total_criterio;
     }
 
-    public static function getValoresPrioridades($id_alternativa, $id_criterio)
+    public static function getValorPrioridade($id_criterio, $id_alternativa)
     {
-        $total_alternativa_criterio = TotalAlternativaAlternativaCriterio::where(['id_alternativa' => $id_alternativa, 'id_criterio' => $id_criterio])->first();
-        $total_criterio_criterio = TotalCriterioCriterio::where(['id_criterio' => $id_criterio])->first();
-        $total = $total_alternativa_criterio * $total_criterio_criterio;
-        return $total;
+        $total_alternativa_criterio = TotalAlternativaCriterio::where(['id_criterio' => $id_criterio, 'id_alternativa' => $id_alternativa])->first();
+        return $total_alternativa_criterio;
     }
 }

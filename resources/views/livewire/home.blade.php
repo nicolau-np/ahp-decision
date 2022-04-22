@@ -170,7 +170,21 @@ $total_criterio['total_Global'] = 0;
                         <tr>
                             <td>{{ $alternativas->sigla }}</td>
                             @foreach ($getCriterios as $criterios)
-                                <td></td>
+                                @php
+                                    $prioridades['valor'] = 0;
+                                    $getValorPrioridade = StaticController::getValorPrioridade($criterios->id, $alternativas->id);
+                                    if ($getValorPrioridade) {
+                                        $prioridades['valor'] = $getValorPrioridade->valor;
+                                    } else {
+                                        $prioridades['valor'] = 0;
+                                    }
+                                @endphp
+                                <td>
+                                    {{ $prioridades['valor'] }}
+                                    &nbsp;&nbsp;
+                                    <a href="#"
+                                        wire:click.prevent="calculateValorPrioridade({{ $criterios->id }}, '{{ $alternativas->id }}')">calculate</a>
+                                </td>
                             @endforeach
                             <td></td>
                             <td></td>
