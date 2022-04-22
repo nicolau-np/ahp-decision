@@ -84,7 +84,7 @@ $wj['coluna'] = 0;
                             @endforeach
 
                             <td>{{ $total['linha'] }}</td>
-                            <td>{{ $wj['linha'] }}</td>
+                            <td>{{ round($wj['linha'],4) }}</td>
                         </tr>
 
                     @endforeach
