@@ -7,15 +7,15 @@ class AlternativaSeeder extends Seeder
 {
     static $alternativas = [
         [
-            'alternativa' => "Alternativa 1",
+            'alternativa' => "Projecto A",
             'sigla' => "A",
             'estado' => "on",
         ], [
-            'alternativa' => "Alternativa 2",
+            'alternativa' => "Projecto B",
             'sigla' => "B",
             'estado' => "on",
         ], [
-            'alternativa' => "Alternativa 3",
+            'alternativa' => "Projecto C",
             'sigla' => "C",
             'estado' => "on",
         ],

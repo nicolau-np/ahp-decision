@@ -64,8 +64,8 @@
                         <tr>
                             <th>ID</th>
                             <th>Critério</th>
-                            <th>Projecto 1</th>
-                            <th>Projecto 2</th>
+                            <th>Projecto A</th>
+                            <th>Projecto B</th>
                             <th>Valor</th>
                             <th>Operações</th>
                         </tr>
