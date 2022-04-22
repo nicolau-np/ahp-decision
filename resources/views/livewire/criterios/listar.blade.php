@@ -1,5 +1,7 @@
 @php
 use App\Http\Controllers\StaticController;
+$total['coluna'] = 0;
+$total['linha0'] = 0;
 @endphp
 <div>
     @section('title', $title)
@@ -42,6 +44,10 @@ use App\Http\Controllers\StaticController;
                     <tr>
                         <th>Critério</th>
                         @foreach ($getCriterios as $criterios)
+                            @php
+                                $total['linha0'] = StaticController::getTotalLinha($criterios->id);
+                                $total['coluna'] = $total['coluna'] + $total['linha0'];
+                            @endphp
                             <th>{{ $criterios->sigla }}</th>
                         @endforeach
                         <th>µ</th>
@@ -49,13 +55,13 @@ use App\Http\Controllers\StaticController;
                     </tr>
                 </thead>
                 <tbody>
-                    @php
-                        $total['coluna'] = 0;
-                    @endphp
+
                     @foreach ($getCriterios as $criterios1)
                         @php
                             $valor = 0;
-                            $total['linha'] = 0;
+                            $wj['linha'] = 0;
+                            $total['linha'] = StaticController::getTotalLinha($criterios1->id);
+                            $wj['linha'] = $total['linha'] / $total['coluna'];
                         @endphp
                         <tr>
                             <td>{{ $criterios1->sigla }}</td>
@@ -69,18 +75,18 @@ use App\Http\Controllers\StaticController;
                                         $valor = 0;
                                     }
 
-                                    $total['linha'] = $total['linha'] + $valor;
                                 @endphp
                                 <td>
                                     {{ $valor }}
                                 </td>
                             @endforeach
+                            @php
+
+                            @endphp
                             <td>{{ $total['linha'] }}</td>
-                            <td></td>
+                            <td>{{ $wj['linha'] }}</td>
                         </tr>
-                        @php
-                            $total['coluna'] = $total['coluna'] + $total['linha'];
-                        @endphp
+
                     @endforeach
                     <tr>
                         <td colspan="4">Total</td>
