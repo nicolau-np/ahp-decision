@@ -2,6 +2,7 @@
 use App\Http\Controllers\StaticController;
 $total['coluna'] = 0;
 $total['linha0'] = 0;
+$wj['coluna'] = 0;
 @endphp
 <div>
     @section('title', $title)
@@ -62,6 +63,7 @@ $total['linha0'] = 0;
                             $wj['linha'] = 0;
                             $total['linha'] = StaticController::getTotalLinha($criterios1->id);
                             $wj['linha'] = $total['linha'] / $total['coluna'];
+                            $wj['coluna'] = $wj['coluna'] + $wj['linha'];
                         @endphp
                         <tr>
                             <td>{{ $criterios1->sigla }}</td>
@@ -80,9 +82,7 @@ $total['linha0'] = 0;
                                     {{ $valor }}
                                 </td>
                             @endforeach
-                            @php
 
-                            @endphp
                             <td>{{ $total['linha'] }}</td>
                             <td>{{ $wj['linha'] }}</td>
                         </tr>
@@ -91,7 +91,7 @@ $total['linha0'] = 0;
                     <tr>
                         <td colspan="4">Total</td>
                         <td>{{ $total['coluna'] }}</td>
-                        <td></td>
+                        <td>{{ $wj['coluna'] }}</td>
                     </tr>
                 </tbody>
             </table>
