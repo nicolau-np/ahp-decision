@@ -25,7 +25,7 @@
                             <td>{{ $alternativas->sigla }}</td>
                             <td>{{ $alternativas->estado }}</td>
                             <td>
-                                <a href="http://">Avançar</a>
+                            <a href="/alternativas/create-vs/{{$alternativas->id}}">Alternativa-VS</a>
                             </td>
                         </tr>
                     @endforeach
