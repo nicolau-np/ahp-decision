@@ -24,5 +24,5 @@ class TotalAlternativaCriterio extends Model
     public function criterios()
     {
         return $this->belongsTo(Criterio::class, 'id_criterio', 'id');
-    }
+    } 
 }
