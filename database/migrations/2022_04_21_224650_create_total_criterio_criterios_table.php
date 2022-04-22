@@ -16,7 +16,7 @@ class CreateTotalCriterioCriteriosTable extends Migration
         Schema::create('total_criterio_criterios', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->bigIncrements('id');
-            $table->bigInterger('id_criterio')->unsigned()->inde();
+            $table->bigInteger('id_criterio')->unsigned()->index();
             $table->decimal('valor', 16, 2)->nullable();
             $table->decimal('total', 16, 2)->nullable();
             $table->string('estado');

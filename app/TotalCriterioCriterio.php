@@ -19,4 +19,13 @@ class TotalCriterioCriterio extends Model
     {
         return $this->belongsTo(Criterio::class, 'id_criterio', 'id');
     }
+
+    public static function calculateTotal($id_criterio)
+    {
+        $total_criterio_criterio = TotalCriterioCriterio::where(['id_criterio' => $id_criterio])->first();
+        $soma = TotalCriterioCriterio::sum('valor');
+        $total = $total_criterio_criterio->valor / $soma;
+
+        return $total;
+    }
 }
