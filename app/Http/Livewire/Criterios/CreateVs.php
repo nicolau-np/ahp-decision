@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Criterios;
 
 use App\Criterio;
 use App\CriterioCriterio;
+use App\TotalCriterioCriterio;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -54,7 +55,26 @@ class CreateVs extends Component
                     'valor' => 1,
                     'estado' => "on"
                 ]);
+                //cadasta ele no total de criterios
+                $total_criterio = TotalCriterioCriterio::create([
+                    'id_criterio' => $this->getCriterio->id,
+                    'valor' => null,
+                    'total' => null,
+                    'estado' => "on",
+                ]);
             }
+            //soma dos criterios
+            $soma_criterios = CriterioCriterio::where(['id_criterio1' => $this->getCriterio->id])->sum('valor');
+            //salvar valor criterio
+            $total_criterio_criterio = TotalCriterioCriterio::where(['id_criterio' => $this->getCriterio->id])->update([
+                'valor' => $soma_criterios,
+            ]);
+            //total dos criterios
+            $total_criterios = TotalCriterioCriterio::calculateTotal($this->getCriterio->id);
+            //salva total do criterio
+            $total_criterio_criterio = TotalCriterioCriterio::where(['id_criterio' => $this->getCriterio->id])->update([
+                'total' => $total_criterios,
+            ]);
             $criterio = CriterioCriterio::create($data);
 
             DB::commit();
