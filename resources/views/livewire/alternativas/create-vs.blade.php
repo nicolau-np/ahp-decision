@@ -5,7 +5,7 @@
     @section('type', $type)
 
         <div class="content">
-            <h1>{{ $getCriterio->criterio }} Vs</h1>
+            <h1>{{ $getAlternativa->alternativa }} =>{{ $getAlternativa->sigla }} Vs</h1>
             <hr />
 
             <div class="form">
@@ -29,6 +29,16 @@
                 </div>
 
                 <form wire:submit.prevent="submit">
+                    <select wire:model="alternativa">
+                        <option hidden>Alternativa</option>
+                        @foreach ($getAlternativas as $alternativas)
+                            <option value="{{ $alternativas->id }}">{{ $alternativas->sigla }}</option>
+                        @endforeach
+                    </select>
+                    @error('alternativa')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    <br /><br />
                     <select wire:model="criterio">
                         <option hidden>Critério</option>
                         @foreach ($getCriterios as $criterios)
@@ -53,21 +63,23 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Critério 1</th>
-                            <th>Critério 2</th>
+                            <th>Critério</th>
+                            <th>Alternativa 1</th>
+                            <th>Alternativa 2</th>
                             <th>Valor</th>
                             <th>Operações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($getCriteriosVS as $criteriosvs)
+                        @foreach ($getAlternativasVS as $alternativasvs)
                             <tr>
-                                <td>{{ $criteriosvs->id }}</td>
-                                <td>{{ $criteriosvs->id_criterio1 }}</td>
-                                <td>{{ $criteriosvs->id_criterio2 }}</td>
-                                <td>{{ $criteriosvs->valor }}</td>
+                                <td>{{ $alternativasvs->id }}</td>
+                                <td>{{ $alternativasvs->criterios->criterio }}</td>
+                                <td>{{ $alternativasvs->alternativas1->sigla }}</td>
+                                <td>{{ $alternativasvs->alternativas2->sigla }}</td>
+                                <td>{{ $alternativasvs->valor }}</td>
                                 <td>
-                                    <a href="/criterios/eliminar-vs/{{ $criteriosvs->id }}">Eliminar-VS</a>
+                                    <a href="/alternativas/eliminar-vs/{{ $alternativasvs->id }}">Eliminar-VS</a>
                                 </td>
                             </tr>
                         @endforeach

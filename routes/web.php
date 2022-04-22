@@ -28,7 +28,7 @@ Route::group(['prefix' => "criterios"], function () {
 
 Route::group(['prefix' => "alternativas"], function () {
     Route::livewire('/list', "alternativas.listar");
-    Route::livewire('/create-vs/{id_alternativa}', "criterios.alternativa-vs");
+    Route::livewire('/create-vs/{id_alternativa}', "alternativas.create-vs");
 });
 
 /*Route::get('/criterios', function () {
