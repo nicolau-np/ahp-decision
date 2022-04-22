@@ -60,7 +60,11 @@ use App\Http\Controllers\StaticController;
                             @endforeach
 
                             <td>{{ $total_criterio['valor'] }}</td>
-                            <td>{{ $total_criterio['total'] }}</td>
+                            <td>{{ $total_criterio['total'] }}
+                                &nbsp;
+                                &nbsp;
+                                <a wire:click="calculateTotalCriterio({{$criterios1->id}})">Calculate</a>
+                            </td>
                         </tr>
 
                     @endforeach

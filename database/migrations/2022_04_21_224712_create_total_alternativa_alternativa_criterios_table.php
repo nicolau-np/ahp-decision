@@ -19,7 +19,7 @@ class CreateTotalAlternativaAlternativaCriteriosTable extends Migration
             $table->bigInteger('id_alternativa')->unsigned()->index();
             $table->bigInteger('id_criterio')->unsigned()->index();
             $table->decimal('valor', 16, 2)->nullable();
-            $table->decimal('total', 16, 2)->nullable();
+            $table->decimal('total', 16, 3)->nullable();
             $table->string('estado');
             $table->timestamps();
         });
