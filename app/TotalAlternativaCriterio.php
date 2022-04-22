@@ -33,4 +33,12 @@ class TotalAlternativaCriterio extends Model
         $total = $total_alternativa_criterio->total * $total_criterio_criterio->total;
         return $total;
     }
+
+    public static function calculateTotal($id_alternativa){
+        $total_alternativa_criterio = TotalAlternativaCriterio::where(['id_alternativa' => $id_alternativa])->first();
+        $soma = TotalAlternativaCriterio::sum('valor');
+        $total = $total_alternativa_criterio->valor / $soma;
+
+        return $total;
+    }
 }

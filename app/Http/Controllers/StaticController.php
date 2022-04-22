@@ -60,7 +60,13 @@ class StaticController extends Controller
 
     public static function somaAlternativaPrioridade($id_alternativa)
     {
-        $total = TotalAlternativaCriterio::where(['id_alternativa'=>$id_alternativa])->sum('valor');
+        $total = TotalAlternativaCriterio::where(['id_alternativa' => $id_alternativa])->sum('valor');
+        return $total;
+    }
+
+    public static function somaAlternativaPrioridadeGlobal($id_alternativa)
+    {
+        $total = TotalAlternativaCriterio::where(['id_alternativa' => $id_alternativa])->sum('total');
         return $total;
     }
 }

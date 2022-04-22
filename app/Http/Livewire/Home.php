@@ -82,4 +82,22 @@ class Home extends Component
             return back()->with(['error' => $e->getMessage()]);
         }
     }
+
+    public function calculateTotalPrioridade($id_alternativa)
+    {
+        $total = TotalAlternativaCriterio::calculateTotal($id_alternativa);
+        DB::beginTransaction();
+        try {
+
+            $total_alternativa_criterio = TotalAlternativaCriterio::where([
+                'id_alternativa' => $id_alternativa
+            ])->update(['total' => $total]);
+            
+            DB::commit();
+            return back()->with(['success' => "Feito com sucesso"]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with(['error' => $e->getMessage()]);
+        }
+    }
 }
