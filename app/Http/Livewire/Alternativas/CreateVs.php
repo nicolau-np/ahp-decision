@@ -79,7 +79,7 @@ class CreateVs extends Component
 
             //soma alternativas
             $soma_alternativa_criterio = AlternativaAlternativaCriterio::where([
-                'id_alternativa' => $this->getAlternativa->id,
+                'id_alternativa1' => $this->getAlternativa->id,
                 'id_criterio' => $this->criterio
             ])->sum('valor');
 
@@ -88,7 +88,7 @@ class CreateVs extends Component
                 'id_alternativa' => $this->getAlternativa->id,
                 'id_criterio' => $this->criterio
             ])->update(['valor' => $soma_alternativa_criterio]);
-            
+
             DB::commit();
             $this->clearFields();
             return back()->with(['success' => "Feito com sucesso"]);
