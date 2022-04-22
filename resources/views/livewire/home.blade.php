@@ -3,6 +3,10 @@ use App\Http\Controllers\StaticController;
 $total['coluna'] = 0;
 $total['linha0'] = 0;
 $wj['coluna'] = 0;
+
+$total['coluna_alternativa'] = 0;
+$total['linha0_alternativa'] = 0;
+$wj['coluna_alternativa1'] = 0;
 @endphp
 
 <div>
@@ -86,19 +90,45 @@ $wj['coluna'] = 0;
                             <tr>
                                 <th>{{ $criterios->sigla }} ({{ round($wj['linha_alternativa'], 3) }})</th>
                                 @foreach ($getAlternativas as $alternativas)
+                                    @php
+                                        
+                                    @endphp
                                     <th>{{ $alternativas->sigla }}</th>
                                 @endforeach
+                                <th>∑</th>
+                                <th>α</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($getAlternativas as $alternativas1)
+                                @php
+                                    $valor_alternativa = 0;
+                                    $total['linha_alternativa'] = StaticController::getTotalLinhaAlternativa($alternativas1->id, $criterios->id);
+
+                                @endphp
                                 <tr>
                                     <td>{{ $alternativas1->sigla }}</td>
                                     @foreach ($getAlternativas as $alternativas2)
-                                        <td></td>
+                                        @php
+                                            $valor_alternativa = 0;
+                                            $getAlternativaValue = StaticController::getAlternativaValue($criterios->id, $alternativas1->id, $alternativas2->id);
+                                            if ($getAlternativaValue) {
+                                                $valor_alternativa = $getAlternativaValue->valor;
+                                            } else {
+                                                $valor_alternativa = 0;
+                                            }
+                                        @endphp
+                                        <td>{{ $valor_alternativa }}</td>
                                     @endforeach
+                                    <td>{{ $total['linha_alternativa'] }}</td>
+                                    <td>{{ round($wj['linha_alternativa1'],3) }}</td>
                                 </tr>
                             @endforeach
+                            <tr>
+                                <td colspan="4">Total</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
                         </tbody>
                     </table>
             @endforeach
