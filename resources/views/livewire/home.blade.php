@@ -4,8 +4,6 @@ use App\Http\Controllers\StaticController;
 $total_criterio['valor_Global'] = 0;
 $total_criterio['total_Global'] = 0;
 
-$total_alternatica_criterio['valor_Global'] = 0;
-$total_alternatica_criterio['total_Global'] = 0;
 @endphp
 
 <div>
@@ -88,7 +86,8 @@ $total_alternatica_criterio['total_Global'] = 0;
 
             @foreach ($getCriterios as $criterios)
                 @php
-
+                    $total_alternatica_criterio['valor_Global'] = 0;
+                    $total_alternatica_criterio['total_Global'] = 0;
                 @endphp
                 <hr />
                 <h4>{{ $loop->iteration }}. Cálculo Peso das alternativas no critério {{ $criterios->criterio }}</h3>
