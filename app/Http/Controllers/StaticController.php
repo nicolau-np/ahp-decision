@@ -47,7 +47,15 @@ class StaticController extends Controller
 
     public static function getTotalAlternativaCriterio($id_criterio, $id_alternativa)
     {
-        $total_criterio = TotalAlternativaAlternativaCriterio::where(['id_criterio' => $id_criterio, 'id_alternativa'=>$id_alternativa])->first();
+        $total_criterio = TotalAlternativaAlternativaCriterio::where(['id_criterio' => $id_criterio, 'id_alternativa' => $id_alternativa])->first();
         return $total_criterio;
+    }
+
+    public static function getValoresPrioridades($id_alternativa, $id_criterio)
+    {
+        $total_alternativa_criterio = TotalAlternativaAlternativaCriterio::where(['id_alternativa' => $id_alternativa, 'id_criterio' => $id_criterio])->first();
+        $total_criterio_criterio = TotalCriterioCriterio::where(['id_criterio' => $id_criterio])->first();
+        $total = $total_alternativa_criterio * $total_criterio_criterio;
+        return $total;
     }
 }
