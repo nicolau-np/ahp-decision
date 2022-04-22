@@ -120,13 +120,17 @@ $total_criterio['total_Global'] = 0;
                                         <td>{{ $valor_alternativa }}</td>
                                     @endforeach
                                     <td>---</td>
-                                    <td>---</td>
+                                    <td>
+                                        &nbsp;&nbsp;
+                                        <a href="#"
+                                            wire:click.prevent="calculateTotalAlternativaCriterio({{ $criterios->id }}, '{{ $alternativas1->id }}')">Calculate</a>
+                                    </td>
                                 </tr>
                             @endforeach
                             <tr>
                                 <td colspan="4">Total</td>
                                 <td>--</td>
-                                <td>--</td>
+                                <td>---</td>
                             </tr>
                         </tbody>
                     </table>

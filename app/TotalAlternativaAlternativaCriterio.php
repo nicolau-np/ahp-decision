@@ -25,4 +25,13 @@ class TotalAlternativaAlternativaCriterio extends Model
     {
         return $this->belongsTo(Alternativa::class, 'id_alternativa', 'id');
     }
+
+    public static function calculateTotal($id_criterio, $id_alternativa)
+    {
+        $total_alternativa_criterio = TotalAlternativaAlternativaCriterio::where(['id_criterio' => $id_criterio, 'id_alternativa'=>$id_alternativa])->first();
+        $soma = TotalAlternativaAlternativaCriterio::where(['id_criterio'=>$id_criterio])->sum('valor');
+        $total = $total_alternativa_criterio->valor / $soma;
+
+        return $total;
+    }
 }
