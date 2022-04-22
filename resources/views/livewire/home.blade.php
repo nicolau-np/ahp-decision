@@ -154,6 +154,34 @@ $total_criterio['total_Global'] = 0;
 
             <hr />
             <h4>Prioridade das Alternativas por critérios</h4>
-
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th></th>
+                        @foreach ($getCriterios as $criterios)
+                            <th>{{ $criterios->sigla }}</th>
+                        @endforeach
+                        <th>∑</th>
+                        <th>π</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($getAlternativas as $alternativas)
+                        <tr>
+                            <td>{{ $alternativas->sigla }}</td>
+                            @foreach ($getCriterios as $criterios)
+                                <td></td>
+                            @endforeach
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    @endforeach
+                    <tr>
+                        <td colspan="4">Total</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
