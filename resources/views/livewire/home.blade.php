@@ -103,7 +103,17 @@ $total_criterio['total_Global'] = 0;
                         <tbody>
                             @foreach ($getAlternativas as $alternativas1)
                                 @php
+                                    $total_alternatica_criterio['valor'] = 0;
+                                    $total_alternatica_criterio['total'] = 0;
                                     //pegar o total dos criterios
+                                    $getTotalAlternativaCriterio = StaticController::getTotalAlternativaCriterio($criterios->id, $alternativas1->id);
+                                    if ($getTotalAlternativaCriterio) {
+                                        $total_alternatica_criterio['valor'] = $getTotalAlternativaCriterio->valor;
+                                        $total_alternatica_criterio['total'] = $getTotalAlternativaCriterio->total;
+                                    } else {
+                                        $total_alternatica_criterio['valor'] = 0;
+                                        $total_alternatica_criterio['total'] = 0;
+                                    }
                                 @endphp
                                 <tr>
                                     <td>{{ $alternativas1->sigla }}</td>
@@ -119,8 +129,9 @@ $total_criterio['total_Global'] = 0;
                                         @endphp
                                         <td>{{ $valor_alternativa }}</td>
                                     @endforeach
-                                    <td>---</td>
+                                    <td>{{ $total_alternatica_criterio['valor'] }}</td>
                                     <td>
+                                        {{ $total_alternatica_criterio['total'] }}
                                         &nbsp;&nbsp;
                                         <a href="#"
                                             wire:click.prevent="calculateTotalAlternativaCriterio({{ $criterios->id }}, '{{ $alternativas1->id }}')">Calculate</a>
