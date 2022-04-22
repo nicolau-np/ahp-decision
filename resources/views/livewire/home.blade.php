@@ -74,6 +74,15 @@ $wj['coluna'] = 0;
             <!-- fim -->
 
             <hr />
-            
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td> </td>
+                </tbody>
+            </table>
         </div>
     </div>
