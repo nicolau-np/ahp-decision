@@ -63,19 +63,18 @@ class CreateVs extends Component
                     'estado' => "on",
                 ]);
             }
+
+
+            //salva em criterios
+            $criterio = CriterioCriterio::create($data);
+
             //soma dos criterios
             $soma_criterios = CriterioCriterio::where(['id_criterio1' => $this->getCriterio->id])->sum('valor');
             //salvar valor criterio
+
             $total_criterio_criterio = TotalCriterioCriterio::where(['id_criterio' => $this->getCriterio->id])->update([
                 'valor' => $soma_criterios,
             ]);
-            //total dos criterios
-            $total_criterios = TotalCriterioCriterio::calculateTotal($this->getCriterio->id);
-            //salva total do criterio
-            $total_criterio_criterio = TotalCriterioCriterio::where(['id_criterio' => $this->getCriterio->id])->update([
-                'total' => $total_criterios,
-            ]);
-            $criterio = CriterioCriterio::create($data);
 
             DB::commit();
             $this->clearFields();

@@ -18,7 +18,7 @@ class CreateTotalCriterioCriteriosTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('id_criterio')->unsigned()->index();
             $table->decimal('valor', 16, 2)->nullable();
-            $table->decimal('total', 16, 2)->nullable();
+            $table->decimal('total', 16, 3)->nullable();
             $table->string('estado');
             $table->timestamps();
         });

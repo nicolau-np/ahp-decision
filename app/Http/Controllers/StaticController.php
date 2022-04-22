@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AlternativaAlternativaCriterio;
 use App\Criterio;
 use App\CriterioCriterio;
+use App\TotalCriterioCriterio;
 use Illuminate\Http\Request;
 
 class StaticController extends Controller
@@ -35,5 +36,11 @@ class StaticController extends Controller
     {
         $total = AlternativaAlternativaCriterio::where(['id_alternativa1' => $id_alternativa1, 'id_criterio' => $id_criterio])->sum('valor');
         return $total;
+    }
+
+    public static function getTotalCriterio($id_criterio1)
+    {
+        $total_criterio = TotalCriterioCriterio::where(['id_criterio' => $id_criterio1])->first();
+        return $total_criterio;
     }
 }

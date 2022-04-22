@@ -28,7 +28,19 @@ use App\Http\Controllers\StaticController;
                 <tbody>
 
                     @foreach ($getCriterios as $criterios1)
-
+                        @php
+                            //pegar total criterios
+                            $total_criterio['valor'] = 0;
+                            $total_criterio['total'] = 0;
+                            $getTotalCriterio = StaticController::getTotalCriterio($criterios1->id);
+                            if ($getTotalCriterio) {
+                                $total_criterio['valor'] = $getTotalCriterio->valor;
+                                $total_criterio['total'] = $getTotalCriterio->total;
+                            } else {
+                                $total_criterio['valor'] = 0;
+                                $total_criterio['total'] = 0;
+                            }
+                        @endphp
                         <tr>
                             <td>{{ $criterios1->sigla }}</td>
                             @foreach ($getCriterios as $criterios2)
@@ -47,8 +59,8 @@ use App\Http\Controllers\StaticController;
 
                             @endforeach
 
-                            <td>---</td>
-                            <td>---</td>
+                            <td>{{ $total_criterio['valor'] }}</td>
+                            <td>{{ $total_criterio['total'] }}</td>
                         </tr>
 
                     @endforeach
@@ -81,7 +93,7 @@ use App\Http\Controllers\StaticController;
                         <tbody>
                             @foreach ($getAlternativas as $alternativas1)
                                 @php
-
+                                    //pegar o total dos criterios
                                 @endphp
                                 <tr>
                                     <td>{{ $alternativas1->sigla }}</td>
