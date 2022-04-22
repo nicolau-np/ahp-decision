@@ -3,6 +3,9 @@ use App\Http\Controllers\StaticController;
 
 $total_criterio['valor_Global'] = 0;
 $total_criterio['total_Global'] = 0;
+
+$total_alternatica_criterio['valor_Global'] = 0;
+$total_alternatica_criterio['total_Global'] = 0;
 @endphp
 
 <div>
@@ -114,6 +117,9 @@ $total_criterio['total_Global'] = 0;
                                         $total_alternatica_criterio['valor'] = 0;
                                         $total_alternatica_criterio['total'] = 0;
                                     }
+
+                                    $total_alternatica_criterio['valor_Global'] = $total_alternatica_criterio['valor_Global'] + $total_alternatica_criterio['valor'];
+                                    $total_alternatica_criterio['total_Global'] = $total_alternatica_criterio['total_Global'] + $total_alternatica_criterio['total'];
                                 @endphp
                                 <tr>
                                     <td>{{ $alternativas1->sigla }}</td>
@@ -140,8 +146,8 @@ $total_criterio['total_Global'] = 0;
                             @endforeach
                             <tr>
                                 <td colspan="4">Total</td>
-                                <td>--</td>
-                                <td>---</td>
+                                <td>{{ $total_alternatica_criterio['valor_Global'] }}</td>
+                                <td>{{ $total_alternatica_criterio['total_Global'] }}</td>
                             </tr>
                         </tbody>
                     </table>
