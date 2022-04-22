@@ -1,5 +1,8 @@
 @php
 use App\Http\Controllers\StaticController;
+
+$total_criterio['valor_Global'] = 0;
+$total_criterio['total_Global'] = 0;
 @endphp
 
 <div>
@@ -40,6 +43,8 @@ use App\Http\Controllers\StaticController;
                                 $total_criterio['valor'] = 0;
                                 $total_criterio['total'] = 0;
                             }
+                            $total_criterio['valor_Global'] = $total_criterio['valor_Global'] + $total_criterio['valor'];
+                            $total_criterio['total_Global'] = $total_criterio['total_Global'] + $total_criterio['total'];
                         @endphp
                         <tr>
                             <td>{{ $criterios1->sigla }}</td>
@@ -63,15 +68,16 @@ use App\Http\Controllers\StaticController;
                             <td>{{ $total_criterio['total'] }}
                                 &nbsp;
                                 &nbsp;
-                                <a wire:click="calculateTotalCriterio({{$criterios1->id}})">Calculate</a>
+                                <a href="#"
+                                    wire:click.prevent="calculateTotalCriterio({{ $criterios1->id }})">Calculate</a>
                             </td>
                         </tr>
 
                     @endforeach
                     <tr>
                         <td colspan="4">Total</td>
-                        <td>---</td>
-                        <td>---</td>
+                        <td>{{ $total_criterio['valor_Global'] }}</td>
+                        <td>{{ $total_criterio['total_Global'] }}</td>
                     </tr>
                 </tbody>
             </table>
