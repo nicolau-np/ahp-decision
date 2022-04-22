@@ -152,5 +152,8 @@ $total_criterio['total_Global'] = 0;
                     </table>
             @endforeach
 
+            <hr />
+            <h4>Prioridade das Alternativas por critérios</h4>
+
         </div>
     </div>
