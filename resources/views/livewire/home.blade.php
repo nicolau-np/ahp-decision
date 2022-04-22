@@ -20,7 +20,7 @@ $soma_alternativasPrioridadeGlobal['total'] = 0;
 
             <hr />
             <!-- tabela dos criterios sobre os criterios-->
-            <table border="1">
+            <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Critério</th>
@@ -93,7 +93,7 @@ $soma_alternativasPrioridadeGlobal['total'] = 0;
                 @endphp
                 <hr />
                 <h4>{{ $loop->iteration }}. Cálculo Peso das alternativas no critério {{ $criterios->criterio }}</h3>
-                    <table border="1">
+                    <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>{{ $criterios->sigla }} ()</th>
@@ -156,7 +156,7 @@ $soma_alternativasPrioridadeGlobal['total'] = 0;
 
             <hr />
             <h4>Prioridade dos Projectos por critérios</h4>
-            <table border="1">
+            <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th></th>
@@ -210,7 +210,7 @@ $soma_alternativasPrioridadeGlobal['total'] = 0;
                         <td colspan="4">Total</td>
                         <td>{{ $soma_alternativasPrioridade['total'] }}</td>
                         <td>
-                            <!--{{ $soma_alternativasPrioridadeGlobal['total'] }}-->
+                            {{ $soma_alternativasPrioridadeGlobal['total'] }}
                         </td>
                     </tr>
                 </tbody>

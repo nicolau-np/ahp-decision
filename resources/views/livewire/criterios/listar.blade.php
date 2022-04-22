@@ -1,4 +1,3 @@
-
 <div>
     @section('title', $title)
     @section('menu', $menu)
@@ -9,7 +8,7 @@
             <h1>Critérios</h1>
             <hr />
 
-            <table border="1">
+            <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -27,12 +26,12 @@
                             <td>{{ $criterios->sigla }}</td>
                             <td>{{ $criterios->estado }}</td>
                             <td>
-                                <a href="/criterios/create-vs/{{ $criterios->id }}">Criterio-VS</a>
+                                <a href="/criterios/create-vs/{{ $criterios->id }}">Comparar</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-       
+
         </div>
     </div>

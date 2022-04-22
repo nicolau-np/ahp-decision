@@ -5,13 +5,13 @@
     @section('type', $type)
 
         <div class="content">
-            <h1>Alternativas</h1>
+            <h1>Projectos</h1>
             <hr />
-            <table border="1">
+            <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Alternativa</th>
+                        <th>Projecto</th>
                         <th>Sígla</th>
                         <th>Estado</th>
                         <th>Operações</th>
@@ -25,7 +25,7 @@
                             <td>{{ $alternativas->sigla }}</td>
                             <td>{{ $alternativas->estado }}</td>
                             <td>
-                                <a href="/alternativas/create-vs/{{ $alternativas->id }}">Alternativa-VS</a>
+                                <a href="/alternativas/create-vs/{{ $alternativas->id }}" class="">Comparar</a>
                             </td>
                         </tr>
                     @endforeach
