@@ -14,8 +14,19 @@ class CreateTotalAlternativaAlternativaCriteriosTable extends Migration
     public function up()
     {
         Schema::create('total_alternativa_alternativa_criterios', function (Blueprint $table) {
-            $table->id();
+            $table->engine = "InnoDB";
+            $table->bigIncrements('id');
+            $table->bigInteger('id_alternativa')->unsigned()->index();
+            $table->bigInteger('id_criterio')->unsigned()->index();
+            $table->decimal('valor', 16, 2)->nullable();
+            $table->decimal('total', 16, 2)->nullable();
+            $table->string('estado');
             $table->timestamps();
+        });
+
+        Schema::table('total_alternativa_alternativa_criterios', function (Blueprint $table) {
+            $table->foreign('id_alternativa')->references('id')->on('alternativas')->onUpdate('cascade');
+            $table->foreign('id_criterio')->references('id')->on('criterios')->onUpdate('cascade');
         });
     }
 

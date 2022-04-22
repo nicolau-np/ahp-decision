@@ -33,4 +33,18 @@ class Criterio extends Model
     {
         return $this->hasMany(AlternativaCriterio::class, 'id_criterio', 'id');
     }
+
+    public function total_criterio_criterios()
+    {
+        return $this->hasMany(TotalCriterioCriterio::class, 'id_criterio', 'id');
+    }
+
+    public function total_alternativa_alternativa_criterios()
+    {
+        return $this->hasMany(TotalAlternativaAlternativaCriterio::class, 'id_criterio', 'id');
+    }
+
+    public function total_alternativa_criterios(){
+        return $this->hasMany(TotalAlternativaCriterio::class, 'id_criterio', 'id');
+    }
 }

@@ -14,8 +14,17 @@ class CreateTotalCriterioCriteriosTable extends Migration
     public function up()
     {
         Schema::create('total_criterio_criterios', function (Blueprint $table) {
-            $table->id();
+            $table->engine = "InnoDB";
+            $table->bigIncrements('id');
+            $table->bigInterger('id_criterio')->unsigned()->inde();
+            $table->decimal('valor', 16, 2)->nullable();
+            $table->decimal('total', 16, 2)->nullable();
+            $table->string('estado');
             $table->timestamps();
+        });
+
+        Schema::table('total_criterio_criterios', function (Blueprint $table) {
+            $table->foreign('id_criterio')->references('id')->on('criterios')->onUpdate('cascade');
         });
     }
 

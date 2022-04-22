@@ -6,7 +6,6 @@ $wj['coluna'] = 0;
 
 $total['coluna_alternativa'] = 0;
 $total['linha0_alternativa'] = 0;
-$wj['coluna_alternativa1'] = 0;
 @endphp
 
 <div>
@@ -91,7 +90,8 @@ $wj['coluna_alternativa1'] = 0;
                                 <th>{{ $criterios->sigla }} ({{ round($wj['linha_alternativa'], 3) }})</th>
                                 @foreach ($getAlternativas as $alternativas)
                                     @php
-                                        
+                                        $total['linha0_alternativa'] = StaticController::getTotalLinhaAlternativa($alternativas->id, $criterios->id);
+                                        $total['coluna_alternativa'] = $total['coluna_alternativa'] + $total['linha0_alternativa'];
                                     @endphp
                                     <th>{{ $alternativas->sigla }}</th>
                                 @endforeach
@@ -104,6 +104,7 @@ $wj['coluna_alternativa1'] = 0;
                                 @php
                                     $valor_alternativa = 0;
                                     $total['linha_alternativa'] = StaticController::getTotalLinhaAlternativa($alternativas1->id, $criterios->id);
+                                    $wj['linha_alternativa1'] = $total['linha_alternativa'] / $total['coluna_alternativa'];
 
                                 @endphp
                                 <tr>
