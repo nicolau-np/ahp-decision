@@ -84,11 +84,21 @@ $wj['coluna'] = 0;
                     <table border="1">
                         <thead>
                             <tr>
-                                <th>{{ $criterios->sigla }} ({{ round($wj['linha_alternativa'],3) }})</th>
+                                <th>{{ $criterios->sigla }} ({{ round($wj['linha_alternativa'], 3) }})</th>
+                                @foreach ($getAlternativas as $alternativas)
+                                    <th>{{ $alternativas->sigla }}</th>
+                                @endforeach
                             </tr>
                         </thead>
                         <tbody>
-                            <td></td>
+                            @foreach ($getAlternativas as $alternativas1)
+                                <tr>
+                                    <td>{{ $alternativas1->sigla }}</td>
+                                    @foreach ($getAlternativas as $alternativas2)
+                                        <td></td>
+                                    @endforeach
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
             @endforeach
