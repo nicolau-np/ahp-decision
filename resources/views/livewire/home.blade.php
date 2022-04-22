@@ -4,6 +4,8 @@ use App\Http\Controllers\StaticController;
 $total_criterio['valor_Global'] = 0;
 $total_criterio['total_Global'] = 0;
 
+$soma_alternativasPrioridade['total'] = 0;
+
 @endphp
 
 <div>
@@ -70,7 +72,7 @@ $total_criterio['total_Global'] = 0;
                                 &nbsp;
                                 &nbsp;
                                 <a href="#"
-                                    wire:click.prevent="calculateTotalCriterio({{ $criterios1->id }})">Calculate</a>
+                                    wire:click.prevent="calculateTotalCriterio({{ $criterios1->id }})">C</a>
                             </td>
                         </tr>
 
@@ -139,7 +141,7 @@ $total_criterio['total_Global'] = 0;
                                         {{ $total_alternatica_criterio['total'] }}
                                         &nbsp;&nbsp;
                                         <a href="#"
-                                            wire:click.prevent="calculateTotalAlternativaCriterio({{ $criterios->id }}, '{{ $alternativas1->id }}')">Calculate</a>
+                                            wire:click.prevent="calculateTotalAlternativaCriterio({{ $criterios->id }}, '{{ $alternativas1->id }}')">C</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -183,16 +185,20 @@ $total_criterio['total_Global'] = 0;
                                     {{ $prioridades['valor'] }}
                                     &nbsp;&nbsp;
                                     <a href="#"
-                                        wire:click.prevent="calculateValorPrioridade({{ $criterios->id }}, '{{ $alternativas->id }}')">calculate</a>
+                                        wire:click.prevent="calculateValorPrioridade({{ $criterios->id }}, '{{ $alternativas->id }}')">C</a>
                                 </td>
                             @endforeach
-                            <td></td>
+                            @php
+                                $somaAlternativaPrioridade = StaticController::somaAlternativaPrioridade($alternativas->id);
+                                $soma_alternativasPrioridade['total'] = $soma_alternativasPrioridade['total'] + $somaAlternativaPrioridade;
+                            @endphp
+                            <td>{{ $somaAlternativaPrioridade }}</td>
                             <td></td>
                         </tr>
                     @endforeach
                     <tr>
                         <td colspan="4">Total</td>
-                        <td></td>
+                        <td>{{ $soma_alternativasPrioridade['total'] }}</td>
                         <td></td>
                     </tr>
                 </tbody>
