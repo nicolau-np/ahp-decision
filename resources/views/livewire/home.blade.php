@@ -60,7 +60,7 @@ $wj['coluna'] = 0;
                             @endforeach
 
                             <td>{{ $total['linha'] }}</td>
-                            <td>{{ round($wj['linha'], 4) }}</td>
+                            <td>{{ round($wj['linha'], 3) }}</td>
                         </tr>
 
                     @endforeach
@@ -73,16 +73,25 @@ $wj['coluna'] = 0;
             </table>
             <!-- fim -->
 
-            <hr />
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <td> </td>
-                </tbody>
-            </table>
+            @foreach ($getCriterios as $criterios)
+                @php
+                    $total['linha001'] = StaticController::getTotalLinha($criterios->id);
+                    $wj['linha_alternativa'] = $total['linha001'] / $total['coluna'];
+                    //$wj['coluna_alternativa'] = $wj['coluna_alternativa'] + $wj['linha_alternativa'];
+                @endphp
+                <hr />
+                <h4>{{ $loop->iteration }}. Cálculo Peso das alternativas no critério {{ $criterios->criterio }}</h3>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>{{ $criterios->sigla }} ({{ round($wj['linha_alternativa'],3) }})</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td></td>
+                        </tbody>
+                    </table>
+            @endforeach
+
         </div>
     </div>
