@@ -11,8 +11,8 @@ class Listar extends Component
     {
         $alternativas = Alternativa::all();
         $data = [
-            'title'=>"Alternativas",
-            'menu'=>"Alternativas",
+            'title'=>"Projectos",
+            'menu'=>"Projectos",
             'submenu'=>"Listar",
             'type'=>"home",
             'getAlternativas'=>$alternativas,

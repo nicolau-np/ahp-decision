@@ -24,7 +24,7 @@ $type = app()->view->getSections()['type'];
         &nbsp;&nbsp;
         <a href="/criterios/list">Critérios</a>
         &nbsp;&nbsp;
-        <a href="/alternativas/list">Alternativas</a>
+        <a href="/alternativas/list">Projectos</a>
     </div>
 
     @yield('content')

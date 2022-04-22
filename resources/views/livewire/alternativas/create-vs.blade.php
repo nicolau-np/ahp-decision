@@ -30,7 +30,7 @@
 
                 <form wire:submit.prevent="submit">
                     <select wire:model="alternativa">
-                        <option hidden>Alternativa</option>
+                        <option hidden>Projecto</option>
                         @foreach ($getAlternativas as $alternativas)
                             <option value="{{ $alternativas->id }}">{{ $alternativas->sigla }}</option>
                         @endforeach
@@ -64,8 +64,8 @@
                         <tr>
                             <th>ID</th>
                             <th>Critério</th>
-                            <th>Alternativa 1</th>
-                            <th>Alternativa 2</th>
+                            <th>Projecto 1</th>
+                            <th>Projecto 2</th>
                             <th>Valor</th>
                             <th>Operações</th>
                         </tr>

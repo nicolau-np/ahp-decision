@@ -155,7 +155,7 @@ $soma_alternativasPrioridadeGlobal['total'] = 0;
             @endforeach
 
             <hr />
-            <h4>Prioridade das Alternativas por critérios</h4>
+            <h4>Prioridade dos Projectos por critérios</h4>
             <table border="1">
                 <thead>
                     <tr>

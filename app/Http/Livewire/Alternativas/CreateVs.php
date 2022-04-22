@@ -111,8 +111,8 @@ class CreateVs extends Component
         $criterios = Criterio::all();
         $alternativasvs = AlternativaAlternativaCriterio::where(['id_alternativa1' => $this->getAlternativa->id])->get();
         $data = [
-            'title' => "Alternativa-VS",
-            'menu' => "Alternativa-VS",
+            'title' => "Projectos-VS",
+            'menu' => "Projectos-VS",
             'submenu' => "Novo",
             'type' => "home",
             'getAlternativasVS' => $alternativasvs,
