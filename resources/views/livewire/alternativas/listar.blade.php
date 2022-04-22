@@ -25,11 +25,13 @@
                             <td>{{ $alternativas->sigla }}</td>
                             <td>{{ $alternativas->estado }}</td>
                             <td>
-                            <a href="/alternativas/create-vs/{{$alternativas->id}}">Alternativa-VS</a>
+                                <a href="/alternativas/create-vs/{{ $alternativas->id }}">Alternativa-VS</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+
+
         </div>
     </div>
